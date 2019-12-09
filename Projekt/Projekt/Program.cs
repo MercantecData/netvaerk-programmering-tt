@@ -7,6 +7,7 @@ namespace Projekt
     {
         static void Main(string[] args)
         {
+            //Tommys Løsning
             Console.WriteLine("Hello Network! \n solutions \nNo. 1 is assignments 1-4 \nNo. 2 is assignment 5");
 
             int userResponse = int.Parse(Console.ReadLine());
