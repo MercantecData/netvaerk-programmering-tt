@@ -39,8 +39,8 @@ namespace netværk_programmering_TB
             }
 
             //Opg. 5
-            Byte[] bytesArrayToStringConverterThingThatHopefullyWorksLikeItIsProgrammedToDo = { 83, 85, 67, 67, 32, 77, 89, 32, 65, 83, 83, 44, 32, 76, 79, 76 };
-            string byteConvertText = Encoding.UTF8.GetString(bytesArrayToStringConverterThingThatHopefullyWorksLikeItIsProgrammedToDo);
+            Byte[] bytesArray = { 83, 85, 67, 67, 32, 77, 89, 32, 65, 83, 83, 44, 32, 76, 79, 76 };
+            string byteConvertText = Encoding.UTF8.GetString(bytesArray);
             Console.WriteLine(byteConvertText);
            
         }
