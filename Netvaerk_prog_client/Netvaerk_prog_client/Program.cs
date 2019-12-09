@@ -24,6 +24,15 @@ namespace Netvaerk_prog_client
             byte[] buffer = Encoding.UTF8.GetBytes(text);
             
             stream.Write(buffer, 0, buffer.Length);
+
+            /***************Svar fra server****************/
+            byte[] buffer2 = new byte[256];
+            int numberOfBytesRead = stream.Read(buffer2, 0, 256);
+
+            string message2 = Encoding.UTF8.GetString(buffer2, 0, numberOfBytesRead);
+
+            Console.WriteLine(message2);
+
             client.Close();
         }
     }

@@ -27,6 +27,12 @@ namespace Server
             string message = Encoding.UTF8.GetString(buffer, 0, numberOfBytesRead);
 
             Console.WriteLine(message);
+
+            /*************svar tilbage til client*************/
+            string text2 = "Test Hello Network we got connection!";
+            byte[] buffer2 = Encoding.UTF8.GetBytes(text2);
+
+            stream.Write(buffer2, 0, buffer2.Length);
         }
     }
 }
