@@ -11,20 +11,27 @@ namespace Netvaerk_prog_client
         {
             TcpClient client = new TcpClient();
             
+            /**************Connection oprettelse**************/
             int port = 13356;
+            //IPAddress ip = IPAddress.Parse("172.16.115.102");//remote
             //IPAddress ip = IPAddress.Parse("127.0.0.1");//local
-            IPAddress ip = IPAddress.Parse("172.16.115.102");//remote
+            Console.WriteLine("Write the IPadress you want to connect to: ");
+            string ipaddresse = Console.ReadLine();
+            IPAddress ip = IPAddress.Parse(ipaddresse);//fået fra variable
             IPEndPoint endPoint = new IPEndPoint(ip, port);
             
             client.Connect(endPoint);
             
             NetworkStream stream = client.GetStream();
             
-            string text = "Test Hello Network!";
+            /***************Besked til server****************/
+            //string text = "Test Hello Network!";
+            Console.WriteLine("Write a Message to the receiver: ");
+            string text = Console.ReadLine();
             byte[] buffer = Encoding.UTF8.GetBytes(text);
             
             stream.Write(buffer, 0, buffer.Length);
-
+            
             /***************Svar fra server****************/
             byte[] buffer2 = new byte[256];
             int numberOfBytesRead = stream.Read(buffer2, 0, 256);
@@ -32,8 +39,12 @@ namespace Netvaerk_prog_client
             string message2 = Encoding.UTF8.GetString(buffer2, 0, numberOfBytesRead);
 
             Console.WriteLine(message2);
+            
 
             client.Close();
+
+
+            
         }
     }
 }
