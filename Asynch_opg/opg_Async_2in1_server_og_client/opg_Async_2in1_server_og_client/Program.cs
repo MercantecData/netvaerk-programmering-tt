@@ -62,7 +62,7 @@ namespace opg_Async_2in1_server_og_client
             byte[] buffer = Encoding.UTF8.GetBytes(text);
 
             stream.Write(buffer, 0, buffer.Length);
-            client.Close();
+            //client.Close();    //Gør at den skriver "Response message from Client: " 1 eller 2 gange
         }
 
 
