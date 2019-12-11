@@ -14,8 +14,7 @@ namespace opg_Async_2in1_server_og_client
             int numberOfBytesRead = await stream.ReadAsync(buffer, 0, 256);
             string receivedMessage = Encoding.UTF8.GetString(buffer, 0, numberOfBytesRead);
 
-            /*** Besked ved message overført ***/
-            Console.Write("\nResponse message from: " + receivedMessage);
+            Console.Write("\nResponse message from: " + receivedMessage);// Besked ved message overført
         }
 
         public static async void serverprog()
@@ -75,7 +74,7 @@ namespace opg_Async_2in1_server_og_client
             Console.WriteLine("\nClient part: ");
             clientprog();
 
-            Console.ReadKey();
+            Console.ReadLine();
         }
     }
 }
