@@ -14,7 +14,7 @@ namespace opg_Async_2in1_server_og_client
             int numberOfBytesRead = await stream.ReadAsync(buffer, 0, 256);
             string receivedMessage = Encoding.UTF8.GetString(buffer, 0, numberOfBytesRead);
 
-            Console.Write("\n" + receivedMessage);
+            Console.Write("\nResponse message from Client: " + receivedMessage);
         }
 
         public static async void serverprog()
@@ -34,12 +34,12 @@ namespace opg_Async_2in1_server_og_client
             NetworkStream stream = client.GetStream();
             ReceiveMessage(stream);
 
-            Console.Write("Write your message here: ");
+            //Console.Write("Write your message here: ");
             string text = Console.ReadLine();
             byte[] buffer = Encoding.UTF8.GetBytes(text);
 
             stream.Write(buffer, 0, buffer.Length);
-            Console.ReadKey();
+            //Console.ReadKey();
 
         }
        
