@@ -22,7 +22,8 @@ namespace ASyncClientCode
             TcpClient client = new TcpClient();
 
             int port = 13356;
-            IPAddress ip = IPAddress.Parse("172.16.113.102");
+            IPAddress ip = IPAddress.Parse("127.0.0.1");
+            //IPAddress ip = IPAddress.Parse("172.16.113.102");
             IPEndPoint endPoint = new IPEndPoint(ip, port);
 
             client.Connect(endPoint);
