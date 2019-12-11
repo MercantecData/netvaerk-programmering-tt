@@ -7,7 +7,7 @@ namespace opg_Async_2in1_server_og_client
 {
     class Program
     {
-        public async void ReceiveMessage(NetworkStream stream)
+        public static async void ReceiveMessage(NetworkStream stream)
         {
             byte[] buffer = new byte[256];
 
