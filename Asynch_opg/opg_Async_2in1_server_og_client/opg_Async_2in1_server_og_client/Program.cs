@@ -14,7 +14,8 @@ namespace opg_Async_2in1_server_og_client
             int numberOfBytesRead = await stream.ReadAsync(buffer, 0, 256);
             string receivedMessage = Encoding.UTF8.GetString(buffer, 0, numberOfBytesRead);
 
-            Console.Write("\nResponse message from Client: " + receivedMessage);
+            /*** Besked ved message overført ***/
+            Console.Write("\nResponse message from: " + receivedMessage);
         }
 
         public static async void serverprog()
@@ -28,13 +29,13 @@ namespace opg_Async_2in1_server_og_client
             listener.Start();
 
             Console.WriteLine("Awaiting Clients");
-            TcpClient client = await listener.AcceptTcpClientAsync(); //TcpClient client = listener.AcceptTcpClient();
+            TcpClient client = await listener.AcceptTcpClientAsync(); //venter på svar fra client
            
 
-            NetworkStream stream = client.GetStream();
+            NetworkStream stream = client.GetStream(); //besked modtagelse
             ReceiveMessage(stream);
 
-            //Console.Write("Write your message here: ");
+            //mulighed for svar tilbage
             string text = Console.ReadLine();
             byte[] buffer = Encoding.UTF8.GetBytes(text);
 
