@@ -73,6 +73,8 @@ namespace opg_Async_2in1_server_og_client
             
             Console.WriteLine("\nClient part: ");
             clientprog();
+
+            Console.ReadKey();
         }
     }
 }
