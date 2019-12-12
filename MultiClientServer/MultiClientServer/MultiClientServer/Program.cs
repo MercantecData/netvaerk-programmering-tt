@@ -10,8 +10,9 @@ namespace MultiClientServer
     {
         static void Main(string[] args)
         {
-           
+            
             MyServer();
+            
         }
 
         public static List<TcpClient> clients = new List<TcpClient>();
@@ -59,6 +60,7 @@ namespace MultiClientServer
                 int read = await stream.ReadAsync(buffer, 0, buffer.Length);
                 string text = Encoding.UTF8.GetString(buffer, 0, read);
                 Console.WriteLine("client writes: " + text);
+                isRunning = false;
             }
         }
     }
