@@ -10,11 +10,12 @@ namespace MultiClientServer
     {
         static void Main(string[] args)
         {
+           
             MyServer();
         }
 
-        public List<TcpClient> clients = new List<TcpClient>();
-        public void MyServer()
+        public static List<TcpClient> clients = new List<TcpClient>();
+        public static void MyServer()
         {
             IPAddress ip = IPAddress.Parse("127.0.0.1");
             int port = 13356;
@@ -37,7 +38,7 @@ namespace MultiClientServer
             }
         }
 
-        public async void AcceptClients(TcpListener listener)
+        public static  async void AcceptClients(TcpListener listener)
         {
             bool isRunning = true;
             while(isRunning)
@@ -49,7 +50,7 @@ namespace MultiClientServer
             }
         }
 
-        public async void ReceiveMessage(NetworkStream stream)
+        public static async void ReceiveMessage(NetworkStream stream)
         {
             byte[] buffer = new byte[256];
             bool isRunning = true;
