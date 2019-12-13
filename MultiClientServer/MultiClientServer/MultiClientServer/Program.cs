@@ -49,8 +49,8 @@ namespace MultiClientServer
             while(isRunning)
             {
                 TcpClient client = await listener.AcceptTcpClientAsync();//listener er sat til at returnere klient ved connection
-                clients.Add(client);//klient tilføjer til clients listen
-                NetworkStream stream = client.GetStream();//modtager stream til f.eks. text
+                clients.Add(client);//Klient tilføjet til clients listen
+                NetworkStream stream = client.GetStream();//Modtager stream til f.eks. text
                 ReceiveMessage(stream);
             }
         }
