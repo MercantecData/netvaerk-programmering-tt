@@ -14,11 +14,12 @@ namespace MultiClientServer
             MyServer();
             
         }
-
+        /******Her dannes en liste til at indholde forskellige bruger der connecter******/
         public static List<TcpClient> clients = new List<TcpClient>();
+        
         public static void MyServer()
         {
-            IPAddress ip = IPAddress.Parse("127.0.0.1");
+            IPAddress ip = IPAddress.Parse("127.0.0.1");//Ip til connection skal kobles til den relevante på computeren
             int port = 13356;
             TcpListener listener = new TcpListener(ip, port);
             listener.Start();
@@ -32,21 +33,23 @@ namespace MultiClientServer
                 string text = Console.ReadLine();
                 byte[] buffer = Encoding.UTF8.GetBytes(text);
 
-                foreach(TcpClient client in clients)
+                /******Senderbesked fra bruger skrevet på serveren ud til alle forbundet******/
+                foreach (TcpClient client in clients)
                 {
                     client.GetStream().Write(buffer, 0, buffer.Length);
                 }
             }
         }
 
-        public static  async void AcceptClients(TcpListener listener)
+        /******Et loop der asynkront holder udkig efter nye klienter******/
+        public static  async void AcceptClients(TcpListener listener)//listener funktion
         {
             bool isRunning = true;
             while(isRunning)
             {
-                TcpClient client = await listener.AcceptTcpClientAsync();
-                clients.Add(client);
-                NetworkStream stream = client.GetStream();
+                TcpClient client = await listener.AcceptTcpClientAsync();//listener er sat til at returnere klient ved connection
+                clients.Add(client);//klient tilføjer til clients listen
+                NetworkStream stream = client.GetStream();//modtager stream til f.eks. text
                 ReceiveMessage(stream);
             }
         }
