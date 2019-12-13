@@ -34,7 +34,7 @@ namespace MultiClientServer
                 string text = Console.ReadLine();
                 byte[] buffer = Encoding.UTF8.GetBytes(text);//Omdanner skrevet text til bytes
 
-                /******Senderbesked fra bruger skrevet på serveren ud til alle forbundet******/
+                /******Senderbesked skrevet på serveren ud til alle forbundet******/
                 foreach (TcpClient client in clients)
                 {
                     client.GetStream().Write(buffer, 0, buffer.Length);
