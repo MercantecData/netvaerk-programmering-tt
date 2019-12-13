@@ -40,6 +40,7 @@ namespace MultiClientServer
                     client.GetStream().Write(buffer, 0, buffer.Length);
                 }
             }
+            Console.ReadLine();
         }
 
         /******Et loop der asynkront holder udkig efter nye klienter******/
