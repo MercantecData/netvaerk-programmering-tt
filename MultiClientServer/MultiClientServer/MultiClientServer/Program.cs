@@ -19,7 +19,7 @@ namespace MultiClientServer
         
         public static void MyServer()
         {
-            IPAddress ip = IPAddress.Parse("127.0.0.1");//Ip til connection skal kobles til den relevante på computeren
+            IPAddress ip = IPAddress.Any;//Parse("127.0.0.1");//Ip til connection skal kobles til den relevante på computeren
             int port = 13356;
             TcpListener listener = new TcpListener(ip, port);//laver en listener variable af data fra ip og port 
             listener.Start();
@@ -65,6 +65,7 @@ namespace MultiClientServer
                 int read = await stream.ReadAsync(buffer, 0, buffer.Length);
                 string text = Encoding.UTF8.GetString(buffer, 0, read);//Omdanner bytes til text
                 Console.WriteLine("client writes: " + text);
+               
                 isRunning = false;
             }
         }
